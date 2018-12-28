@@ -88,7 +88,9 @@ void DocDe(){
 }
 void Xuatdiem(){
 	for(int i=0;i<NC.size();i++){
+		cout<<"Ten:";
 		cout<<NC[i].ten<<endl;
+		cout<<"Diem:";
 		cout<<NC[i].diem<<endl;
 	}
 }
