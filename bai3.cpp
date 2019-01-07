@@ -40,12 +40,12 @@ void hiende(De d){
 		cout<<label<<":"<<d.dapan[j]<<endl;
 	}		
 }
-
 void docFileDe(){
 	int n;
 	fi>>n;
 	D.resize(n);
 	for(int i=0;i<n;i++){
+		// sai tu vi tri nay
 		getline(fi,D[i].cauhoi);
 		for(int j=0;j<4;j++)
 			getline(fi,D[i].dapan[j]);

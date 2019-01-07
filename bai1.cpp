@@ -1,16 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <string.>
+#include <string.h>
 #include <stdlib.h>
 using namespace std;
 fstream fi("input.txt");
 fstream fo("output.txt");
 class DANHBA{
 	private:
-		string gt,sdt[5],email,diachi;
+		string gt,sdt,email,diachi;
 	public:
 		string ten;
+		// Xuat 1 danh ba ra man hinh
 		xuat(){
 			cout<<"Ten: "<<ten<<endl;
 			cout<<"Gioi tinh: "<<gt<<endl;
@@ -18,6 +19,7 @@ class DANHBA{
 			cout<<"Email: "<<email<<endl;
 			cout<<"Dia chi: "<<diachi;
 		}
+		// doc 1 danh ba tu file
 		nhapF(){
 
 			getline( fi, ten);
@@ -26,6 +28,7 @@ class DANHBA{
 			getline( fi, email);
 			getline( fi, diachi);
 		}
+		// nhap 1 danh ba vao vector danh ba
 		nhap(){
 			cout<<"Nhap ten: ";
 			cin.sync();
@@ -43,6 +46,7 @@ class DANHBA{
 			cin.sync();
 			getline( cin, diachi);		
 		}
+		// xuat1 danh ba ra file
 		xuatF()
 		{
 			fo<<ten<<endl;
@@ -51,19 +55,12 @@ class DANHBA{
 			fo<<email<<endl;
 			fo<<diachi<<endl;
 		}
-		xuatFC()
-		{
-			fi<<ten<<endl;
-			fi<<gt<<endl;
-			fi<<sdt<<endl;
-			fi<<email<<endl;
-			fi<<diachi<<endl;
-		}
 };
 class DSDB{
 	vector <DANHBA> S;
 	vector <DANHBA> P;
 	public:
+		// doc danh ba tu file
 		void nhaptufile(){
 			int n;
 			string h;	
@@ -73,6 +70,7 @@ class DSDB{
 			for(int i=0;i<S.size();i++)
 				S[i].nhapF();
 		}
+		// xuat danh ba duoc them vao ra man hinh
 		void xuatmh(){
 			for(int i=0;i<P.size();i++){
 				P[i].xuat();
@@ -80,6 +78,7 @@ class DSDB{
 				cout<<"------------------------------"<<endl;
 			}
 		}
+		// xuat danh ba ra man hinh
 		void xuatmhfile(){
 			for(int i=0;i<S.size();i++){
 				S[i].xuat();
@@ -87,26 +86,26 @@ class DSDB{
 				cout<<"------------------------------"<<endl;
 			}
 		}
-		void xuatfile(){
-			for(int i=0;i<P.size();i++)
-				P[i].xuatF();
-		}
+		// xuat danh ba chinh ra file 
 		void xuatfileC(){
 			for(int i=0;i<S.size();i++)
 				S[i].xuatF();
 		}
+		// them 1 danh ba
 		void them(){
 			DANHBA moi;
 			moi.nhap();
 			P.insert(P.end(), 1, moi);
 			S.insert(S.end(), 1, moi);
 		}
+		// xoa 1 danh ba
 		void xoa(){
 			int vt;
 			cout<<"Nhap vi tri xoa:";
 			cin>>vt;	
 			S.erase(S.begin()+vt);
 		}
+		// chinh sua 1 danh ba
 		void chinhsua(){
 			int vt;
 			DANHBA moi;
@@ -117,6 +116,7 @@ class DSDB{
 			S.erase(S.begin()+vt);
 			S.insert(S.begin()+vt,moi);
 		}
+		// tim kiem danh ba theo ten
 		void Timkiem(){
 			string k;
 			cout<<"Nhap ten: ";
@@ -140,23 +140,44 @@ int main(){
 	do {
 		cout<<"Nhap yeu cau:"<<endl<<"1: Them"<<endl<<"2: Liet ke cac ban ghi them vao"<<endl<<"3: Chinh sua ban ghi"<<endl<<"4: Xoa ban ghi"<<endl<<"5: Tim kiem"<<endl<<"0: Ket thuc"<<endl;
 		cin>>x;
-		if(x==1)
-			A.them();
-		if(x==2)
-			A.xuatmh();
-		if(x==3)
-			A.chinhsua();
-		if(x==4)
-			A.xoa();
-		if(x==5)
-			A.Timkiem();
+		switch (x) {
+			case 1:{
+				system("cls");
+				A.them();
+				system("cls");
+				break;
+			}
+			case 2:{
+				system("cls");
+				A.xuatmh();
+				system("cls");
+				break;
+			}
+			case 3:{
+				system("cls");
+				A.chinhsua();
+				system("cls");
+				break;
+			}
+			case 4:{
+				system("cls");
+				A.xoa();
+				system("cls");
+				break;
+			}
+			case 5:{
+				system("cls");
+				A.Timkiem();
+				system("cls");
+				break;
+			}
+		}
 		cout<<"------------------------------"<<endl;
 	}
 	while (x!=0);
 	cout<<"Danh sanh danh ba: "<<endl;
 	cout<<"------------------------------"<<endl;
 	A.xuatmhfile();
-	A.xuatfile();
 	A.xuatfileC();
 	fi.close();
 	fo.close();	

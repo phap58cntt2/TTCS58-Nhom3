@@ -10,18 +10,7 @@ struct NGAYTHANG
     int thang;
     int nam;
 };
-//void nhap(NGAY &ngay)
-//{
-//	do{ cout<<"Vui long nhap theo dung dinh dang!!"<<endl;
-//		cout<<"Nhap nam: ";
-//		cin>>ngay.nam;
-//		cout<<"Nhap thang: ";
-//		cin>>ngay.thang;
-//		cout<<"Nhap ngay: ";
-//	    cin>>ngay.ngay;	
-//	}
-//	while((ngay.ngay>31 || ngay.thang>12)||(ngay.thang==2 && ngay.ngay>29));
-//}
+// Nhap ngay thang
 void Nhap( NGAYTHANG &N){
 	char c;
 	do{
@@ -30,12 +19,14 @@ void Nhap( NGAYTHANG &N){
 	}
 	while((N.ngay>31 || N.thang>12)||(N.thang==2 && N.ngay>29));
 }
+// kiem tra nam nhuan
 bool ktnhuan(NGAYTHANG N){
     if( ( ( N.nam%100 != 00) && ( N.nam%4 == 0) ) || ( N.nam%400==0 ))
         return true;
     else
         return false;
 }
+// so thu tu ngay tring nam
 void ngaytrongnam(NGAYTHANG N)
 {
     int n, thutu;
@@ -61,6 +52,7 @@ void ngaytrongnam(NGAYTHANG N)
     thutu=n+(N.ngay);
     cout<<endl<<"Ngay thu "<<thutu<<" trong nam"<<endl;
 }
+// cong them ngay
 void CongThem(NGAYTHANG &N){
 	int n;
 	cout<<"Nhap so nguyen duong: ";
@@ -81,6 +73,7 @@ void CongThem(NGAYTHANG &N){
 }	n--;
 	}
 }
+// tru ra ngay
 void TruRa(NGAYTHANG &N){
 	int n;
 	cout<<"Nhap so nguyen duong: ";

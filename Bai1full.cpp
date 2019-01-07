@@ -7,8 +7,8 @@
 #include <string.h>
 using namespace std;
 
-fstream fi("contactInput.dat", ios::in | ios::binary);
-fstream fo("contactOutput.dat", ios::out | ios::binary );
+fstream fi("input.dat", ios::in | ios::binary);
+fstream fo("output.dat", ios::out | ios::binary );
 
 typedef struct {
 	char name[30]; 
@@ -19,13 +19,7 @@ typedef struct {
 } CONTACT;
 
 vector <CONTACT> db;
-
-//void nhapContact();
-//void nhapFileContact();
-//void xuatContact();
-//void xuatFileContact();
-
-//Read file .dat contact
+//Doc tu file
 void readFileContact(){
 	CONTACT c;
 	
@@ -66,24 +60,24 @@ void showFileContact() {
 	}
 }
 
-// add machine in file
-//void addContact() {
-//	CONTACT addNew;
-//	cout << "Nhap ten: ";
-//	cin >> addNew.name;
-//	cout << "Nhap gioi tinh: ";
-//	cin >> addNew.sex;
-//	cout << "Nhap so dien thoai: ";
-//	cin >> addNew.phone;
-//	cout << "Nhap email: ";
-//	cin >> addNew.email;
-//	cout << "Nhap dia chi: ";
-//	cin >> addNew.address;
-//	
-//	db.push_back(addNew);
-//}
-
-void addContact() { 
+// them danh ba bang tay
+void addContact() {
+	CONTACT addNew;
+	cout << "Nhap ten: ";
+	cin >> addNew.name;
+	cout << "Nhap gioi tinh: ";
+	cin >> addNew.sex;
+	cout << "Nhap so dien thoai: ";
+	cin >> addNew.phone;
+	cout << "Nhap email: ";
+	cin >> addNew.email;
+	cout << "Nhap dia chi: ";
+	cin >> addNew.address;
+	
+	db.push_back(addNew);
+}
+// them danh ba cung'
+void addContactH() { 
 	CONTACT c1;
 	strcpy(c1.name, "Son");
 	strcpy(c1.sex, "Nam");
@@ -108,21 +102,14 @@ void addContact() {
 	strcpy(c3.address, "CamRanh");
 	db.push_back(c3);
 }
-
-void addNew(CONTACT c){
-	db.push_back(c);
-}
-
-// edit contact with by name
-
-// edit contact with by phone
+// chinh sua danh ba theo sdt
 void editByPhone() {
 	CONTACT cEdit;
 	
 	int item;
 	char ePhone[11];
 	
-	cout << "Enter the phone to fix: ";
+	cout << "Enter the phone number to fix: ";
 	cin >> ePhone;
 	
 	for (int i = 0; i < db.size(); i++) {
@@ -143,10 +130,7 @@ void editByPhone() {
 		}
 	}
 }
-
-// Delete contact with by name
-
-// Delete contact with by phone
+// xoa danh ba theo sdt
 void deleteByPhone() {
 	int item;
 	char dePhone[11];
@@ -161,14 +145,10 @@ void deleteByPhone() {
 		}
 	}
 }
-
-// Search contact with by phone
-
-// Search contact with by name
+// tim kiem danh ba theo ten
 void searchByName() {
 	int item;
-	char sName[20];
-	
+	char sName[20];	
 	cout << "Enter name: ";
 	cin >> sName;
 	
@@ -185,7 +165,7 @@ void searchByName() {
 		
 	}
 }
-
+// quay lai menu
 bool returnToMenu() {
 	char rtnMenu;
 	cout << "-----------------------------" << endl;
@@ -196,7 +176,7 @@ bool returnToMenu() {
         return true;
     } return false;
 }
-
+// hien menu chon
 void showMenu() {
 	cout << "1. Add contact" << endl;
 	cout << "2. Show contact" << endl;
@@ -205,7 +185,7 @@ void showMenu() {
 	cout << "5. Find contact" << endl;
 	cout << "6. Exit contact" << endl;
 }
-
+// chon nemu
 void menuOption() {
 	int mo;
 	cout << "Enter your choice:> ";
@@ -269,8 +249,7 @@ void menuOption() {
 		case 5: 
 			system("cls");
 			cout << "------ Search ------" << endl;
-			searchByName();
-			
+			searchByName();	
 			if(returnToMenu()) {
                 system("cls");
                 showMenu();
@@ -292,49 +271,10 @@ void menuOption() {
 
 int main() {
 	vector <CONTACT> db;
-	
-//	CONTACT c1;
-//	strcpy(c1.name, "Son");
-//	strcpy(c1.sex, "Nam");
-//	strcpy(c1.phone, "0985407705");
-//	strcpy(c1.email, "nhuson2306@gmail.com");
-//	strcpy(c1.address, "QuangTri");
-//	
-//	CONTACT c2;
-//	strcpy(c2.name, "Suong");
-//	strcpy(c2.sex, "Nu");
-//	strcpy(c2.phone, "0336692745");
-//	strcpy(c2.email, "xuansuonga3@gmail.com");
-//	strcpy(c2.address, "CamLam");
-//	
-//	CONTACT c3;
-//	strcpy(c3.name, "Vy");
-//	strcpy(c3.sex, "Nam");
-//	strcpy(c3.phone, "0384722549");
-//	strcpy(c3.email, "nguyentrieuvy@gmail.com");
-//	strcpy(c3.address, "CamRanh");
-//	
-//	addNew(c1);
-//	addNew(c2);
-//	addNew(c3);
-//
-//	writeFileContact();
-	
+//	readFileContact();
+//	addContact();
+	addContactH();
 	showMenu();
 	menuOption();
-	
-//	cout << "------ Edit ------" << endl;
-//	editByPhone();
-//	cout << "------ List contact after edit ------" << endl;
-//	showFileContact();
-//	
-//	cout << "------ Delete ------" << endl;
-//	deleteByPhone();
-//	cout << "------ List contact after delete ------" << endl;
-//	showFileContact();
-//	
-//	cout << "------ Search ------" << endl;
-//	searchByName();
-	
-	return 0;
+	writeFileContact();
 }

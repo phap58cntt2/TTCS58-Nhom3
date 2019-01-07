@@ -14,6 +14,7 @@ struct Contact{
 	char sex[5];
 };
 vector <Contact> DB;
+// doc file DAT
 void readFile(){
 	Contact c;
 	DB.clear();
@@ -28,6 +29,7 @@ void readFile(){
 	fi.close();
 	DB.pop_back();
 }
+// ghi file DAT
 void writeFileContact() {
 	for (int i = 0; i < DB.size(); i++) {
 		fo.write(DB[i].name, sizeof(DB[i].name));
@@ -38,19 +40,22 @@ void writeFileContact() {
 	}
 	fo.close(); 
 }
+// them 1 danh ba
 void themmoi(Contact c){
 	DB.push_back(c);
 }
+// liet ke danh ba
 void lietkeDB(){
 	for (int i = 0; i < DB.size(); i++) {
-		cout << DB[i].name << endl;
-		cout << DB[i].sex << endl;
-		cout << DB[i].phone << endl;
-		cout << DB[i].email << endl;
-		cout << DB[i].address << endl;
-		cout<<endl;
+		cout << "Ten: " << DB[i].name << endl;
+		cout << "Gioi tinh: " << DB[i].sex << endl;
+		cout << "So DT: " << DB[i].phone << endl;
+		cout << "Email: " << DB[i].email << endl;
+		cout << "Dia chi: " << DB[i].address << endl;
+		cout<<"------------------------------"<<endl;
 	}
 }
+// chinh sua danh ba theo sdt
 void chinhsua(){
 	Contact moi;
 	int vt,check;
@@ -75,6 +80,7 @@ void chinhsua(){
 		}	
 	}
 }
+// xoa danh ba theo sdt
 void xoa(){
 	int vt,check;
 	char sdt[11];
@@ -90,6 +96,7 @@ void xoa(){
 		}
 
 }
+// tim kiem danh ba theo ten
 void timkiem(){
 	int vt,check;
 	char ten[20];
@@ -136,14 +143,11 @@ int main(){
 	themmoi(c2);
 	themmoi(c3);
 	writeFileContact();
+	cout<<"Danh sanh danh ba: "<<endl;
 	lietkeDB();
 	chinhsua();
-	lietkeDB();
-	cout<<"---------"<<endl;
 	xoa();
-	lietkeDB();
-	cout<<"---------"<<endl;
 	timkiem();
-	cout<<"---------"<<endl;
 	lietkeDB();
+	writeFileContact();
 }
